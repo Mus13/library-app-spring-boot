@@ -1,14 +1,11 @@
 package com.library.Libraryapp.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
-@jakarta.persistence.Entity
+@Entity
 @Data
-public class Entity {
+public class Book {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
