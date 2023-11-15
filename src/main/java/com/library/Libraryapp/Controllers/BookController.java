@@ -24,7 +24,7 @@ public class BookController {
         return bookService.checkoutBookByUser(userEmail,bookId);
     }
 
-    @GetMapping("/secure/currentLoans/count")
+    @GetMapping("/secure/currentloans/count")
     public int currentLoandCount(@RequestHeader(value = "Authorization") String token) throws Exception{
         String userEmail= ExtractJWT.payloadJWTExtraction(token,"\"sub\"");
         return bookService.currentLoansCount(userEmail);
