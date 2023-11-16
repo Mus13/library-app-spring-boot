@@ -95,4 +95,24 @@ public class BookService {
         checkoutRepository.deleteById(validateCheckout.getId());
     }
 
+    public void renewLoan(String userEmail, Long bookId) throws Exception{
+
+        Optional<Book> book= bookRepository.findById(bookId);
+        Checkout validateCheckout= checkoutRepository.findByUserEmailAndBookId(userEmail,bookId);
+        if (!book.isPresent() || validateCheckout==null){
+            throw new Exception("Book does not exist or not checked out by user.");
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date d1= sdf.parse(validateCheckout.getReturnDate());
+        Date d2= sdf.parse(LocalDate.now().toString());
+        TimeUnit timeUnit= TimeUnit.DAYS;
+        long diffrence_in_time= timeUnit.convert(d1.getTime()-d2.getTime(),TimeUnit.MILLISECONDS);
+        if (diffrence_in_time<0){
+            throw new Exception("Due returned date is expired.");
+        }
+
+        validateCheckout.setReturnDate(LocalDate.now().plusDays(7).toString());
+        checkoutRepository.save(validateCheckout);
+    }
+
 }
