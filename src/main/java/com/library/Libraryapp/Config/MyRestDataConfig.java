@@ -1,6 +1,7 @@
 package com.library.Libraryapp.Config;
 
 import com.library.Libraryapp.Entity.History;
+import com.library.Libraryapp.Entity.Message;
 import com.library.Libraryapp.Entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -23,8 +24,10 @@ public class MyRestDataConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(Book.class);
         config.exposeIdsFor(Review.class);
         config.exposeIdsFor(History.class);
+        config.exposeIdsFor(Message.class);
         disableHttpMethods(Book.class, config, theUnsupportedActions);
         disableHttpMethods(Review.class, config, theUnsupportedActions);
+        disableHttpMethods(Message.class, config, theUnsupportedActions);
 
         /* Configure CORS Mapping */
         cors.addMapping(config.getBasePath() + "/**")
