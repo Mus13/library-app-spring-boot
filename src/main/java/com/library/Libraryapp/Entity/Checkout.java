@@ -11,7 +11,7 @@ public class Checkout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
     @Column(name = "user_email")
     private String userEmail;
     @Column(name = "checkout_date")

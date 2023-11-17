@@ -1,5 +1,6 @@
 package com.library.Libraryapp.Config;
 
+import com.library.Libraryapp.Entity.History;
 import com.library.Libraryapp.Entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -21,6 +22,7 @@ public class MyRestDataConfig implements RepositoryRestConfigurer {
 
         config.exposeIdsFor(Book.class);
         config.exposeIdsFor(Review.class);
+        config.exposeIdsFor(History.class);
         disableHttpMethods(Book.class, config, theUnsupportedActions);
         disableHttpMethods(Review.class, config, theUnsupportedActions);
 
